@@ -2,6 +2,7 @@
 
 use App\Exports\SalesExport;
 use App\Exports\ProductsExport;
+use App\Exports\UsersExport;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\SalesExportController;
 use App\Http\Controllers\ProductsExportController;
+use App\Http\Controllers\UsersExportController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -43,6 +45,10 @@ Route::middleware(['authenticate'])->group(function () {
     Route::middleware(['superadmin'])->group(function () {
         // User Route
         Route::resource('user', UserController::class);
+        Route::get('/users/export', [UsersExportController::class, 'export'])->name('users.export');
+        Route::get('/users/export/excel', function () {
+            return Excel::download(new UsersExport, 'users.xlsx');
+        })->name('users.export');
 
         Route::get('/sales/export', [SalesExportController::class, 'export'])->name('sales.export');
         Route::get('/sales/export/excel', function () {

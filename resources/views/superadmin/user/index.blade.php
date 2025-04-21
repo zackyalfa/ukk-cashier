@@ -29,9 +29,14 @@
                                 </div>
                             </form>
                             @if(Auth::user()->role == 'superadmin')
-                            <a href="{{ route('user.create') }}" class="btn btn-success ml-2 p-2">
-                                Create User
-                            </a>
+                            <div class="d flex">
+                                <a href="{{ route('users.export') }}" class="btn btn-success mr-2">
+                                    Export Excel
+                                </a>
+                                <a href="{{ route('user.create') }}" class="btn btn-success">
+                                 Create User
+                                </a>
+                            </div>
                             @endif
                         </div>
                         <table class="table table-bordered my-3" style="background-color: #f3f3f3">
