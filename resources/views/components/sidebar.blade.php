@@ -2,7 +2,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="">Cashier ujik </a>
+        <a href="">Cashier </a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>

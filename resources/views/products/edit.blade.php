@@ -114,7 +114,7 @@
                 rupiah += separator + ribuan.join('.');
             }
 
-            return 'Rp ' + rupiah + (split[1] !== undefined ? ',' + split[1] : '');
+            return 'Rp ' + rupiah ;
         }
 
         // Initialize price formatting

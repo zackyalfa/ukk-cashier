@@ -73,9 +73,9 @@ use Illuminate\Support\Facades\DB;
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-    </div>
+    </section>
 </div>
 
 <!-- Detail Transaksi Modal -->

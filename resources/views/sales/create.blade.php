@@ -8,7 +8,7 @@
         <div class="margin-content">
             <div class="container-sm">
                 <div class="section-header">
-                    <h1>Tambah Penjualan</h1>
+                    <h1>Tambah Pembelian</h1>
                 </div>
 
                 @if (session('error'))
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <a href="{{ route('sales.index') }}" class="btn btn-secondary">Kembali</a>
-                                    <button type="submit" class="btn btn-primary">Tambah Penjualan</button>
+                                    <button type="submit" class="btn btn-primary">Tambah Pembelian</button>
                                 </div>
                             </form>
                         </div>

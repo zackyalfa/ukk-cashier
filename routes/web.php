@@ -25,12 +25,17 @@ Route::middleware(['authenticate'])->group(function () {
     Route::resource('products', ProductController::class);
 
     // Sale Route
-    // Route::get('/sales/{id}/invoice', [SaleController::class, 'showInvoice'])->name('sales.invoice');
     Route::get('/sales/{id}/invoice', [SaleController::class, 'showInvoice'])->name('sales.invoice');
     Route::resource('sales', SaleController::class);
 
     // Member Route
     Route::resource('members', MemberController::class);
+
+    // Profile Routes (Accessible by both admin and user)
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/change-password', [ProfileController::class, 'changepassword'])->name('profile.change-password');
+    Route::put('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
 
     // Superadmin Route
     Route::middleware(['superadmin'])->group(function () {
@@ -40,24 +45,15 @@ Route::middleware(['authenticate'])->group(function () {
         Route::get('/sales/export', [SalesExportController::class, 'export'])->name('sales.export');
         Route::get('/sales/export/excel', function () {
             return Excel::download(new SalesExport, 'sales.xlsx');
-        })->name('sales.export');
+        })->name('sales.export.excel');
 
         // Product Route
         Route::put('/products/{id}/update-stock', [ProductController::class, 'updateStock'])->name('products.updateStock');
-
-        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-        Route::get('/profile/change-password', [ProfileController::class, 'changepassword'])->name('profile.change-password');
-        Route::put('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
     });
 
     // User Route
     Route::middleware(['user'])->group(function () {
-
-        // Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-        // Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/confirm-sale', [SaleController::class, 'confirmationStore'])->name('sales.confirmationStore');
-        // Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+        // Route::get('/products', [ProductController::class, 'index'])->name('products.index'); // If you want regular users to see products
     });
 });
-
