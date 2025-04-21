@@ -3,6 +3,7 @@
 use App\Exports\SalesExport;
 use App\Exports\ProductsExport;
 use App\Exports\UsersExport;
+use App\Exports\MembersExport;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\SalesExportController;
 use App\Http\Controllers\ProductsExportController;
 use App\Http\Controllers\UsersExportController;
+use App\Http\Controllers\MembersExportController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -34,6 +36,10 @@ Route::middleware(['authenticate'])->group(function () {
 
     // Member Route
     Route::resource('members', MemberController::class);
+    Route::get('/users/export', [MembersExportController::class, 'export'])->name('members.export');
+        Route::get('/users/export/excel', function () {
+            return Excel::download(new MembersExport, 'members.xlsx');
+        })->name('members.export');
 
     // Profile Routes (Accessible by both admin and user)
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

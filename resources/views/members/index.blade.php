@@ -27,9 +27,14 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="d flex">
+                                <a href="{{ route('product.export') }}" class="btn btn-success mr-2">
+                                    Export Excel
+                                </a>
                                 <a href="{{ route('members.create') }}" class="btn btn-success ml-2 p-2">
                                     Add Member
                                 </a>
+                                </div>
                             </div>
                         </div>
 
