@@ -28,9 +28,14 @@
                                 </div>
                             </form>
                             @if(Auth::user()->role == 'superadmin')
-                            <a href="{{ route('products.create') }}" class="btn btn-success ml-2 p-2">
-                                Create Product
-                            </a>
+                            <div class="d-flex">
+                                <a href="{{ route('product.export') }}" class="btn btn-success mr-2">
+                                    Export Excel
+                                </a>
+                                <a href="{{ route('products.create') }}" class="btn btn-success">
+                                    Create Product
+                                </a>
+                            </div>
                             @endif
                         </div>
                     </div>

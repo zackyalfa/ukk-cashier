@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\SalesExport;
+use App\Exports\ProductsExport;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\SalesExportController;
+use App\Http\Controllers\ProductsExportController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -47,8 +49,12 @@ Route::middleware(['authenticate'])->group(function () {
             return Excel::download(new SalesExport, 'sales.xlsx');
         })->name('sales.export');
 
-        // Product RouteZZ
+        // Product Route
         Route::put('/products/{id}/update-stock', [ProductController::class, 'updateStock'])->name('products.updateStock');
+        Route::get('/products/export', [ProductExportController::class, 'export'])->name('product.export');
+        Route::get('/products/export/excel', function () {
+            return Excel::download(new ProductsExport, 'product.xlsx');
+        })->name('product.export');
     });
 
     // User Route
