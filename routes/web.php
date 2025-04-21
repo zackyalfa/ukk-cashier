@@ -45,9 +45,9 @@ Route::middleware(['authenticate'])->group(function () {
         Route::get('/sales/export', [SalesExportController::class, 'export'])->name('sales.export');
         Route::get('/sales/export/excel', function () {
             return Excel::download(new SalesExport, 'sales.xlsx');
-        })->name('sales.export.excel');
+        })->name('sales.export');
 
-        // Product Route
+        // Product RouteZZ
         Route::put('/products/{id}/update-stock', [ProductController::class, 'updateStock'])->name('products.updateStock');
     });
 
