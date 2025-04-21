@@ -54,8 +54,8 @@ Route::middleware(['authenticate'])->group(function () {
     // User Route
     Route::middleware(['user'])->group(function () {
 
-        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+        // Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        // Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/confirm-sale', [SaleController::class, 'confirmationStore'])->name('sales.confirmationStore');
         // Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     });

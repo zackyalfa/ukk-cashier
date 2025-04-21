@@ -58,14 +58,14 @@
                                     <td>{{ $item->quantity }}</td>
                                     @if(Auth::user()->role == 'superadmin')
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-success edit-stock-btn"
+                                        <button type="button" class="btn btn-primary edit-stock-btn"
                                         data-id="{{ $item->id }}" data-name="{{ $item->name }}"
                                         data-quantity="{{ $item->quantity }}" data-toggle="modal"
                                         data-target="#editStockModal">
                                         Edit Stok
                                     </button>
                                     <a href="{{ route('products.edit', $item->id) }}"
-                                        class="btn btn-success">Edit</a>
+                                        class="btn btn-primary">Edit</a>
                                         <form action="{{ route('products.destroy', $item->id) }}" method="POST"
                                             class="delete-form" style="display: inline-block;">
                                             @csrf
