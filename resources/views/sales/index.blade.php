@@ -100,7 +100,7 @@ use Illuminate\Support\Facades\DB;
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Produk</th>
                                 <th>Harga</th>
                                 <th>Jumlah</th>
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <tr>
                         <td>${index + 1}</td>
                         <td>${product.name}</td>
-                        <td>Rp ${parseInt(product.price || 0).toLocaleString('id-ID')}</td>
+                        <td>Rp ${parseInt(product.price || 0).toLocaleString('id-ID')} </td>
                         <td>${product.quantity}</td>
                         <td>Rp ${subtotal.toLocaleString('id-ID')}</td>
                     </tr>`;
