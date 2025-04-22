@@ -16,61 +16,61 @@
                 <div class="section-body">
                     <div class="table-responsive">
                         <div class="row mb-3">
-                            <div class="col-md-12 d-flex justify-content-between align-items-center">
-                                <form action="{{ route('products.index') }}" method="GET" class="d-flex"
-                                style="max-width: 100%%;">
-                                <div class="input-group">
-                                    <input type="text" name="search" class="form-control rounded"
-                                    placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary rounded ml-2" type="submit">Search</button>
+                            <div class="col-md-12 d-flex justify-content-between align-items-center" style="flex-wrap: wrap;">
+                                <form action="{{ route('products.index') }}" method="GET" class="d-flex mb-2"
+                                    style="max-width: 100%;">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control rounded"
+                                            placeholder="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary rounded ml-2" type="submit">Search</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                            @if(Auth::user()->role == 'superadmin')
-                            <div class="d-flex">
-                                <a href="{{ route('product.export') }}" class="btn btn-success mr-2">
-                                    Export Excel
-                                </a>
-                                <a href="{{ route('products.create') }}" class="btn btn-success">
-                                    Create Product
-                                </a>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    <table class="table table-bordered" style="background-color: #f3f3f3">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Gambar</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
+                                </form>
                                 @if(Auth::user()->role == 'superadmin')
-                                <th>Action</th>
+                                <div class="d-flex mb-2">
+                                    <a href="{{ route('product.export') }}" class="btn btn-success mr-2">
+                                        Export Excel
+                                    </a>
+                                    <a href="{{ route('products.create') }}" class="btn btn-success">
+                                        Create Product
+                                    </a>
+                                </div>
                                 @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($products as $index => $item)
-                            <tr>
-                                <td>{{ $products->firstItem() + $index }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td class="text-center"><img src="{{ asset('storage/' . $item->image) }}"
-                                    width="100"></td>
+                            </div>
+                        </div>
+                        <table class="table table-bordered" style="background-color: #f3f3f3; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Gambar</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    @if(Auth::user()->role == 'superadmin')
+                                    <th>Action</th>
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($products as $index => $item)
+                                <tr>
+                                    <td>{{ $products->firstItem() + $index }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td class="text-center"><img src="{{ asset('storage/' . $item->image) }}"
+                                            width="100"></td>
                                     <td>{{ 'Rp ' . number_format($item->price, 0, ',', '.') }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     @if(Auth::user()->role == 'superadmin')
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-primary edit-stock-btn"
-                                        data-id="{{ $item->id }}" data-name="{{ $item->name }}"
-                                        data-quantity="{{ $item->quantity }}" data-toggle="modal"
-                                        data-target="#editStockModal">
-                                        Edit Stok
-                                    </button>
-                                    <a href="{{ route('products.edit', $item->id) }}"
-                                        class="btn btn-primary">Edit</a>
+                                        <button type="button" class="btn btn-primary edit-stock-btn mb-1"
+                                            data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                            data-quantity="{{ $item->quantity }}" data-toggle="modal"
+                                            data-target="#editStockModal">
+                                            Edit Stok
+                                        </button>
+                                        <a href="{{ route('products.edit', $item->id) }}"
+                                            class="btn btn-primary mb-1">Edit</a>
                                         <form action="{{ route('products.destroy', $item->id) }}" method="POST"
                                             class="delete-form" style="display: inline-block;">
                                             @csrf

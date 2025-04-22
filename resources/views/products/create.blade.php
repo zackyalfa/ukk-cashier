@@ -45,10 +45,10 @@
                                     <input type="text" class="form-control" name="price_display" id="price_display" placeholder="Harga Produk" value="{{ old('price') }}" required>
                                     <input type="hidden" name="price" id="price">
                                 </div>
-                                
+
                                 <div class="form-group mb-3">
                                     <label for="quantity">Stok</label>
-                                    <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Jumlah Stok" value="{{ old('quantity') }}" required>
+                                    <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Jumlah Stok" value="{{ old('quantity', 0) }}" min="0" required>
                                 </div>
 
                                 <div class="form-group mb-4">

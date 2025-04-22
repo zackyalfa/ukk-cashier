@@ -61,14 +61,17 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="total_pay">Jumlah Poin</label>
-                                            <input type="text" class="form-control" id="total_pay" name="total_point" value="{{ $member['points'] }}" readonly>
+                                            <input type="text" class="form-control" id="total_point" name="total_point" value="{{ $member['points'] }}" readonly>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="use_point" class="d-flex align-items-center">
                                                 <input type="hidden" name="use_point" value="0">
-                                                <input type="checkbox" name="use_point" value="1" id="use_point" class="styled-checkbox me-2 mr-1">
+                                                <input type="checkbox" name="use_point" value="1" id="use_point" class="styled-checkbox me-2 mr-1" {{ $member['points'] == 0 ? 'disabled' : '' }}>
                                                 Gunakan Poin
                                             </label>
+                                            @if ($member['points'] == 0)
+                                                <small class="text-muted">Poin Anda saat ini 0.</small>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

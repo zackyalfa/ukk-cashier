@@ -21,7 +21,7 @@ class SaleController extends Controller
         } else {
             $sales = Sale::latest()->paginate(10);
         }
-        
+
         return view('sales.index', compact('sales'));
     }
 
@@ -112,15 +112,15 @@ class SaleController extends Controller
     public function showInvoice($id)
     {
         $sale = Sale::where('id', $id)->firstOrFail();
-    
+
         $productData = json_decode($sale->product_data, true);
-    
+
         $totalProductPrice = array_reduce($productData, function ($carry, $item) {
             return $carry + ($item['price'] * $item['quantity']);
         }, 0);
-    
+
         $discount = $totalProductPrice - $sale->total_amount;
-    
+
         return view('sales.invoice-detail', [
             'invoiceNumber' => $sale->invoice_number,
             'memberName'    => $sale->customer_name,
@@ -133,7 +133,7 @@ class SaleController extends Controller
             'createdAt'     => $sale->created_at
         ]);
     }
-    
+
 
     public function show(Sale $sale)
     {
