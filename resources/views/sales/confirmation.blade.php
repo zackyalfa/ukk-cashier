@@ -136,8 +136,8 @@
             let totalAmount = parseInt($('input[name="total_amount"]').val());
 
             if (totalPay < totalAmount) {
-                alert('Jumlah bayar tidak boleh kurang dari total harga!');
-                event.preventDefault(); // Mencegah form dikirim
+                alert('Mohon maaf pemabayaran kurang dari total!');
+                event.preventDefault();
             }
         });
 
