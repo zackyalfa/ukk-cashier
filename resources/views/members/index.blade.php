@@ -30,12 +30,8 @@
                                         </div>
                                     </form>
                                     <div class="d-flex">
-                                        @if (Auth::user()->role == 'user')
-                                            <a href="{{ route('members.create') }}" class="btn btn-success ml-2 p-2">
-                                                Tambah Member
-                                            </a>
-                                        @elseif(Auth::user()->role == 'superadmin')
-                                            <a href="{{ route('product.export') }}" class="btn btn-success mr-2">
+                                        @if (Auth::user()->role == 'superadmin')
+                                            <a href="{{ route('members.export') }}" class="btn btn-success mr-2">
                                                 Export Excel
                                             </a>
                                             <a href="{{ route('members.create') }}" class="btn btn-success mr-2">

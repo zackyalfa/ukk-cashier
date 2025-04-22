@@ -9,6 +9,6 @@ class MembersExportController extends Controller
 {
     public function export()
     {
-        return Excel::download(new ProductsExport, 'Members.xlsx');
+        return Excel::download(new MembersExport, 'Members.xlsx');
     }
 }

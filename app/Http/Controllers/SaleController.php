@@ -78,7 +78,7 @@ class SaleController extends Controller
             $totalAmount = $totalAmount - $request->total_point;
             Member::where('id', $memberId)->decrement('points', $request->total_point);
         } else {
-            $addPoint = $totalAmount / 750;
+            $addPoint = $totalAmount / 1000;
             Member::where('id', $memberId)->increment('points', $addPoint);
         }
 

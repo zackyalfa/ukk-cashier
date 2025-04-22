@@ -36,8 +36,8 @@ Route::middleware(['authenticate'])->group(function () {
 
     // Member Route
     Route::resource('members', MemberController::class);
-    Route::get('/users/export', [MembersExportController::class, 'export'])->name('members.export');
-        Route::get('/users/export/excel', function () {
+    Route::get('/members/export', [MembersExportController::class, 'export'])->name('members.export');
+        Route::get('/members/export/excel', function () {
             return Excel::download(new MembersExport, 'members.xlsx');
         })->name('members.export');
 
